@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Proposition Canvas Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        input, button {
+            font-size: 16px;
+            padding: 5px 10px;
+        }
+        .canvas {
+            display: flex;
+            gap: 20px;
+        }
+        .value-map, .customer-profile {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .value-map {
+            background-color: #e6f2ff;
+        }
+        .customer-profile {
+            background-color: #e6ffe6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .value-proposition {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Value Proposition Canvas Generator</h1>
+    <div class="input-section">
+        <input type="text" id="topicInput" placeholder="Enter your topic">
+        <button onclick="generateCanvas()">Generate Canvas</button>
+    </div>
+    <div id="canvasOutput"></div>
+
+    <script>
+        function generateCanvas() {
+            const topic = document.getElementById('topicInput').value;
+            if (!topic) {
+                alert('Please enter a topic');
+                return;
+            }
+
+            const canvas = {
+                gainCreators: ['Gain Creator 1', 'Gain Creator 2', 'Gain Creator 3'],
+                productsServices: ['Product/Service 1', 'Product/Service 2', 'Product/Service 3'],
+                painRelievers: ['Pain Reliever 1', 'Pain Reliever 2', 'Pain Reliever 3'],
+                gains: ['Gain 1', 'Gain 2', 'Gain 3'],
+                customerJobs: ['Customer Job 1', 'Customer Job 2', 'Customer Job 3'],
+                pains: ['Pain 1', 'Pain 2', 'Pain 3'],
+                valueProposition: `Value Proposition for ${topic}: [AI-generated value proposition would go here]`
+            };
+
+            const output = `
+                <div class="canvas">
+                    <div class="value-map">
+                        <h2>Value Map</h2>
+                        ${renderSection('🚀 Gain Creators', canvas.gainCreators)}
+                        ${renderSection('🛠️ Products & Services', canvas.productsServices)}
+                        ${renderSection('🩹 Pain Relievers', canvas.painRelievers)}
+                    </div>
+                    <div class="customer-profile">
+                        <h2>Customer Profile</h2>
+                        ${renderSection('😄 Gains', canvas.gains)}
+                        ${renderSection('📋 Customer Jobs', canvas.customerJobs)}
+                        ${renderSection('😟 Pains', canvas.pains)}
+                    </div>
+                </div>
+                <div class="value-proposition">
+                    <h2>Value Proposition Statement</h2>
+                    <p>${canvas.valueProposition}</p>
+                </div>
+            `;
+
+            document.getElementById('canvasOutput').innerHTML = output;
+        }
+
+        function renderSection(title, items) {
+            return `
+                <h3>${title}</h3>
+                <ul>
+                    ${items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>
